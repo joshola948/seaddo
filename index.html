@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f2">
+  <title>SEADDO — A little about me</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #333a31;
+      --muted: #666b62;
+      --paper: #f7f7f2;
+      --green: #c9f36a;
+      --line: #dedfd6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      width: min(1080px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: .92rem;
+      text-decoration: none;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+      align-items: center;
+      gap: 48px;
+      min-height: 490px;
+      padding-block: 72px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin-bottom: 22px;
+      font-size: clamp(3rem, 8vw, 6.4rem);
+      letter-spacing: -.075em;
+      line-height: .98;
+    }
+
+    .hero-copy {
+      max-width: 530px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 20px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: var(--ink);
+      color: white;
+      font-size: .94rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color .2s, color .2s;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: var(--green);
+      color: var(--ink);
+    }
+
+    .hero-mark {
+      display: grid;
+      min-height: 250px;
+      place-items: center;
+      border-radius: 48% 52% 43% 57% / 53% 43% 57% 47%;
+      background: var(--green);
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 800;
+      letter-spacing: -.1em;
+      transform: rotate(5deg);
+    }
+
+    .section {
+      padding-block: 64px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      max-width: 620px;
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      margin-bottom: 12px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -.055em;
+      line-height: 1.1;
+    }
+
+    .section-intro {
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 190px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .card-number {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 22px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      font-size: .85rem;
+      font-weight: 700;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .contact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 34px;
+      border-radius: 18px;
+      background: var(--green);
+    }
+
+    .contact h2 {
+      margin-bottom: 8px;
+    }
+
+    .contact p {
+      margin-bottom: 0;
+      color: #42483a;
+    }
+
+    .contact .button {
+      flex: 0 0 auto;
+      border-color: var(--ink);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .contact .button:hover,
+    .contact .button:focus-visible {
+      background: var(--ink);
+      color: white;
+    }
+
+    footer {
+      padding-block: 26px;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 700px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding-block: 16px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        min-height: auto;
+        padding-block: 58px;
+      }
+
+      .hero-mark {
+        min-height: 190px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .contact {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="logo" href="#home" aria-label="SEADDO home">SEADDO</a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#what-i-do">What I do</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div>
+          <p class="eyebrow">Hello, welcome to my website</p>
+          <h1>Good ideas start somewhere.</h1>
+          <p class="hero-copy">I’m Seaddo. This is my little corner of the internet. I’m learning, making things, and sharing what I do.</p>
+          <a class="button" href="#about">Get to know me</a>
+        </div>
+        <div class="hero-mark" aria-hidden="true">S.</div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-heading">
+          <p class="eyebrow">A little about me</p>
+          <h2>Making things with care.</h2>
+          <p class="section-intro">Use this space to introduce yourself. Say what you’re interested in, what you’re learning, or what kind of work you’d like to do.</p>
+        </div>
+      </section>
+
+      <section class="section" id="what-i-do">
+        <div class="section-heading">
+          <p class="eyebrow">What I do</p>
+          <h2>Things I’m working on.</h2>
+          <p class="section-intro">Replace these examples with your skills, services, hobbies, or projects.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <span class="card-number" aria-hidden="true">01</span>
+            <h3>Learning</h3>
+            <p>I’m building my skills and trying new ideas.</p>
+          </article>
+          <article class="card">
+            <span class="card-number" aria-hidden="true">02</span>
+            <h3>Creating</h3>
+            <p>I enjoy turning ideas into something people can use.</p>
+          </article>
+          <article class="card">
+            <span class="card-number" aria-hidden="true">03</span>
+            <h3>Growing</h3>
+            <p>I’m always open to learning and taking on a new challenge.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="contact">
+          <div>
+            <p class="eyebrow">Get in touch</p>
+            <h2>Have an idea? Say hello.</h2>
+            <p>Replace the example email address with your own before sharing this site.</p>
+          </div>
+          <a class="button" href="mailto:hello@example.com">Email me</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 SEADDO</p>
+    </footer>
+  </div>
+</body>
+</html>
